@@ -7,6 +7,9 @@ import { useState } from "react";
 import CircleButton from "./.expo/components/CircleButton";
 import IconButton from "./.expo/components/IconButton";
 import EmojiPicker from "./.expo/components/EmojiPicker";
+import EmojiList from "./.expo/components/EmojiList";
+import EmojiSticker from "./.expo/components/EmojiSticker";
+import { GestureHandlerRootView } from "react-native-gesture-handler";
 
 const PlaceholderImage = require("./assets/images/background-image.png");
 
@@ -14,6 +17,7 @@ export default function App() {
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [showAppOptions, setShowAppOptions] = useState(false);
   const [selectedImage, setSelectedImage] = useState(null);
+  const [pickedEmoji, setPickedEmoji] = useState(null);
 
   const pickImageAsync = async () => {
     let result = await ImagePicker.launchImageLibraryAsync({
@@ -46,9 +50,10 @@ export default function App() {
   };
 
   return (
-    <View style={styles.container}>
+    <GestureHandlerRootView style={styles.container}>
       <View style={styles.imageContainer}>
         <ImageViewer placeholderImageSource={PlaceholderImage} selectedImage={selectedImage} />
+        {pickedEmoji && <EmojiSticker imageSize={40} stickerSource={pickedEmoji} />}
       </View>
       {showAppOptions ? (
         <View style={styles.optionsContainer}>
@@ -65,10 +70,10 @@ export default function App() {
         </View>
       )}
       <EmojiPicker isVisible={isModalVisible} onClose={onModalClose}>
-        {/* A list of emoji component will go here */}
+        <EmojiList onSelect={setPickedEmoji} onCloseModal={onModalClose} />
       </EmojiPicker>
       <StatusBar style="auto" />
-    </View>
+    </GestureHandlerRootView>
   );
 }
 
