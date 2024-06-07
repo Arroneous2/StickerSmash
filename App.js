@@ -1,14 +1,14 @@
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet, View, Image } from "react-native";
-import ImageViewer from "./.expo/components/ImageViewer";
-import Button from "./.expo/components/Button";
+import ImageViewer from "./components/ImageViewer";
+import Button from "./components/Button";
 import * as ImagePicker from "expo-image-picker";
 import { useState } from "react";
-import CircleButton from "./.expo/components/CircleButton";
-import IconButton from "./.expo/components/IconButton";
-import EmojiPicker from "./.expo/components/EmojiPicker";
-import EmojiList from "./.expo/components/EmojiList";
-import EmojiSticker from "./.expo/components/EmojiSticker";
+import CircleButton from "./components/CircleButton";
+import IconButton from "./components/IconButton";
+import EmojiPicker from "./components/EmojiPicker";
+import EmojiList from "./components/EmojiList";
+import EmojiSticker from "./components/EmojiSticker";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 
 const PlaceholderImage = require("./assets/images/background-image.png");
